@@ -57,15 +57,9 @@ const numberButton = document.querySelectorAll(".numberButton");
 
 numberButton.forEach(numberButton => {
     numberButton.addEventListener("click", function(e) {
-        if (operator === "") {
-            getNum1(e.target.value);
-        } else if (operator !== "" && operator !== "="){
-            getNum2(e.target.value);
-        }
+        getNumber(e);
     });
 });
-
-
 
 // gets the value of the operator buttons
 
@@ -77,38 +71,44 @@ operatorButton.forEach(operatorButton => {
 });
 
 
-// calculates depend on 
+// gets num1 or num2 depending on when the numbers are clicked
+
+function getNumber(e) {
+    if (operator === "") {
+        getNum1(e.target.value);
+    } else if (operator !== "" && operator !== "="){
+        getNum2(e.target.value);
+    };
+};
+
+
+// calculates depending on when the operator Button is clicked
 
 function calculate(e) {
     if (num2 === "") {
         operator = e.target.value
     } else if (num2 !== "") {
-        if (e.target.value === "=") {
-            num1 = operate(num1, num2, operator);
-            num2 = "";
-            operator = "";
-            changeDisplay(num1);
-        } else {
-            num1 = operate(num1, num2, operator);
-            num2 = "";
-            operator = e.target.value;
-            changeDisplay(num1);
-        };
+        chooseOperator(e);
     } else {
         alert("Something went wrong!");
     };
 }
 
-/*
-1. Schritt: Alle 3 leer
-2. Schritt: Num1 voll -> Num1 erweitern oder Operator eingeben
-3. Schritt: Num1 voll, Operator voll -> Operator ändern oder Num2 eingeben
-4. Schritt: Num1 voll, Num2 voll, Operator voll -> Num2 erweitern oder 2ten Operator eingeben
-5.1 Schritt: Operator = -> Ergebnis wird in Num1 gespeichert und angezeigt, Num2 & Operator werden zurückgesetzt
-5.2 Schritt: Operator +, -, *, / -> Ergebnis wird in Num1 gespeichert und neuer Operator wird als Operator gespeichert, Num2 wird zurückgesetzt
-*/
+function chooseOperator(e) {
+    if (e.target.value === "=") {
+        num1 = operate(num1, num2, operator);
+        num2 = "";
+        operator = "";
+        changeDisplay(num1);
+    } else {
+        num1 = operate(num1, num2, operator);
+        num2 = "";
+        operator = e.target.value;
+        changeDisplay(num1);
+    };
+}
 
-// calculation function, that decides with if statements, if first or second number is typed in or if an operator is typed in
+// update num1 & num2
 
 function getNum1(value) {
     num1 += value;
@@ -121,7 +121,7 @@ function getNum2(value) {
 }
 
 
-// only deletes num1, solution for num2 needed
+// resets calculator
 
 const AC = document.querySelector("#AC");
 AC.addEventListener("click", function () {
@@ -137,13 +137,12 @@ AC.addEventListener("click", function () {
 changeDisplay(0);
 
 
-
-
 /*
-Click operand -> Value of operand gets saved into num1
-Click operand again -> Value gets added to num1
-Click operator -> operator gets saved, num1 function is stopped, num2 function starts
-click operand -> operator gets saved into num2
-Click operand again -> Value gets added to num2
-Click equal or operator -> display value gets updated and saved to num1
+Calculating Process:
+1. Schritt: Alle 3 leer
+2. Schritt: Num1 voll -> Num1 erweitern oder Operator eingeben
+3. Schritt: Num1 voll, Operator voll -> Operator ändern oder Num2 eingeben
+4. Schritt: Num1 voll, Num2 voll, Operator voll -> Num2 erweitern oder 2ten Operator eingeben
+5.1 Schritt: Operator = -> Ergebnis wird in Num1 gespeichert und angezeigt, Num2 & Operator werden zurückgesetzt
+5.2 Schritt: Operator +, -, *, / -> Ergebnis wird in Num1 gespeichert und neuer Operator wird als Operator gespeichert, Num2 wird zurückgesetzt
 */
