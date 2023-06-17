@@ -70,26 +70,34 @@ numberButton.forEach(numberButton => {
 // gets the value of the operator buttons
 
 const operatorButton = document.querySelectorAll(".operatorButton");
-
 operatorButton.forEach(operatorButton => {
     operatorButton.addEventListener("click", function(e) {
-        if (num2 === "") {
-            operator = e.target.value
-        } else if (num2 !== "") {
-            if (e.target.value === "=") {
-                num1 = operate(num1, num2, operator);
-                num2 = "";
-                operator = "";
-            } else {
-                num1 = operate(num1, num2, operator);
-                num2 = "";
-                operator = e.target.value;
-            };
-        } else {
-            alert("Something went wrong!");
-        };
+        calculate(e);
     });
 });
+
+
+// calculates depend on 
+
+function calculate(e) {
+    if (num2 === "") {
+        operator = e.target.value
+    } else if (num2 !== "") {
+        if (e.target.value === "=") {
+            num1 = operate(num1, num2, operator);
+            num2 = "";
+            operator = "";
+            changeDisplay(num1);
+        } else {
+            num1 = operate(num1, num2, operator);
+            num2 = "";
+            operator = e.target.value;
+            changeDisplay(num1);
+        };
+    } else {
+        alert("Something went wrong!");
+    };
+}
 
 /*
 1. Schritt: Alle 3 leer
@@ -118,7 +126,8 @@ function getNum2(value) {
 const AC = document.querySelector("#AC");
 AC.addEventListener("click", function () {
     num1 = 0;
-    num2 = 0;
+    num2 = "";
+    operator = "";
     changeDisplay(0);
 });
 
