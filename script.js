@@ -82,7 +82,7 @@ function getNumber(e) {
 };
 
 
-// calculates depending on when the operator Button is clicked
+// calculates depending on when the operator Button is clicked !!! Delete num1 when operator = and number gets clicked
 
 function calculate(e) {
     if (num2 === "") {
@@ -111,11 +111,17 @@ function chooseOperator(e) {
 // update num1 & num2
 
 function getNum1(value) {
+    if (num1 === 0 || num1 === "0") {
+        num1 = "";
+    }
     num1 += value;
     changeDisplay(num1);
 }
 
 function getNum2(value) {
+    if (num2 === 0 || num2 === "0") {
+        num2 = "";
+    }
     num2 += value;
     changeDisplay(num2);
 }
