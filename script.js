@@ -9,21 +9,10 @@ let operator = "";
 
 // basic math functions
 
-function add(num1, num2) {
-    return +num1 + +num2
-}
-
-function subtract(num1, num2) {
-    return +num1 - +num2
-}
-
-function multiply(num1, num2) {
-    return +num1 * +num2
-}
-
-function divide(num1, num2) {
-    return +num1 / +num2
-}
+let add = (num1, num2) => +num1 + +num2;
+let subtract = (num1, num2) => +num1 - +num2;
+let multiply = (num1, num2) => +num1 * +num2;
+let divide = (num1, num2) => +num1 / +num2;
 
 
 // makes the final calculation
@@ -137,16 +126,6 @@ function resetOperator(e) {
         changeDisplay(num1)
 }
 
-/* function getNum2(value) {
-    if (num2 === 0 || num2 === "0") {
-        num2 = "";
-    }
-
-    if (operator === "");
-    num2 += value;
-    changeDisplay(num2);
-}
-*/
 
 // resets calculator
 
