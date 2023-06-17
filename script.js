@@ -76,6 +76,8 @@ operatorButton.forEach(operatorButton => {
 function getNumber(e) {
     if (operator === "") {
         getNum1(e.target.value);
+    } else if (operator === "reset") {
+        resetOperator(e);
     } else if (operator !== "" && operator !== "="){
         getNum2(e.target.value);
     };
@@ -98,7 +100,7 @@ function chooseOperator(e) {
     if (e.target.value === "=") {
         num1 = operate(num1, num2, operator);
         num2 = "";
-        operator = "";
+        operator = "reset";
         changeDisplay(num1);
     } else {
         num1 = operate(num1, num2, operator);
@@ -126,6 +128,25 @@ function getNum2(value) {
     changeDisplay(num2);
 }
 
+
+// resets num1 if "=" operator generates result and a number gets clicked before another operater gets chosen
+
+function resetOperator(e) {
+    num1 = e.target.value;
+        operator = "";
+        changeDisplay(num1)
+}
+
+/* function getNum2(value) {
+    if (num2 === 0 || num2 === "0") {
+        num2 = "";
+    }
+
+    if (operator === "");
+    num2 += value;
+    changeDisplay(num2);
+}
+*/
 
 // resets calculator
 
