@@ -129,7 +129,7 @@ function getNum2(value) {
 }
 
 
-// resets num1 if "=" operator generates result and a number gets clicked before another operater gets chosen
+// Let numberButtons reset num1, when "=" operater generates result and no other operater is active
 
 function resetOperator(e) {
     num1 = e.target.value;
