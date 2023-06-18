@@ -19,17 +19,24 @@ let divide = (num1, num2) => +num1 / +num2;
 
 function operate(num1, num2, operator) {
     if (operator === "+") {
-        return add(num1, num2);
+        return round(add(num1, num2));
     } else if (operator === "-") {
-        return subtract(num1,num2);
+        return round(subtract(num1,num2));
     } else if (operator === "*") {
-        return multiply(num1, num2);
+        return round(multiply(num1, num2));
     } else if (operator === "/") {
-        return divide(num1, num2);
+        return round(divide(num1, num2));
     } else {
         alert("Something went wrong!");
     }
 }
+
+
+// rounds the result to 2 decimals
+
+function round(num) {
+    return Math.round((num + Number.EPSILON) * 100) / 100;
+};
 
 
 // changes Display
@@ -63,7 +70,7 @@ operatorButton.forEach(operatorButton => {
 // gets num1 or num2 depending on when the numbers are clicked
 
 function getNumber(e) {
-    if (operator === "") {
+    if (operator === "" || operator === "=") {
         getNum1(e.target.value);
     } else if (operator === "reset") {
         resetOperator(e);
@@ -73,11 +80,13 @@ function getNumber(e) {
 };
 
 
-// calculates depending on when the operator Button is clicked !!! Delete num1 when operator = and number gets clicked
+// calculates depending on when the operator Button is clicked !!! Delete num1 when operator "=" and number gets clicked
 
 function calculate(e) {
-    if (num2 === "") {
+    if (num2 === "" && e.target.value !== "=") {
         operator = e.target.value
+    } else if (num2 === "" && e.target.value === "=") {
+        // just do nothing
     } else if (num2 !== "") {
         chooseOperator(e);
     } else {
@@ -102,28 +111,41 @@ function chooseOperator(e) {
 // update num1 & num2
 
 function getNum1(value) {
-    if (num1 === 0 || num1 === "0") {
+    if ((num1 === 0 || num1 === "0") && value !== ".") {
         num1 = "";
     }
-    num1 += value;
-    changeDisplay(num1);
+    
+    if (!(String(num1).includes(".")) || !(String(value).includes("."))) {
+        num1 += value;
+        changeDisplay(num1);
+    }
 }
 
 function getNum2(value) {
-    if (num2 === 0 || num2 === "0") {
+    if ((num2 === 0 || num2 === "0") && value !== ".") {
         num2 = "";
     }
-    num2 += value;
-    changeDisplay(num2);
+    const str = ".";
+    if (!(num2.includes(str)) || !(value.includes(str))) {
+        num2 += value;
+        changeDisplay(num2);
+    }
 }
 
 
 // Let numberButtons reset num1, when "=" operater generates result and no other operater is active
 
 function resetOperator(e) {
-    num1 = e.target.value;
+    if ((e.target.value === ".") && !String(num1).includes(".")) {
+        num1 += e.target.value;
         operator = "";
-        changeDisplay(num1)
+    } else if ((e.target.value === ".") && String(num1).includes(".")) {
+        // just do nothing
+    } else {
+        num1 = e.target.value;
+        operator = "";
+    }
+    changeDisplay(num1)
 }
 
 
@@ -141,6 +163,11 @@ AC.addEventListener("click", function () {
 // starts with a zero on the Screen
 
 changeDisplay(0);
+
+// divide by 0 shouldnt work and give an error message
+// get floating point numbers
+// calculating Text floats over screen
+// active class for operator buttons -> gets attached to the active operator -> the "=" operator shouldnt have this feature
 
 
 /*
