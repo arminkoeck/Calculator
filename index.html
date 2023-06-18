@@ -11,30 +11,47 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="calculator">
-        <div id="display"></div>
-        <div id="operands">
-            <button id="AC">AC</button>
-            <button class="numberButton" value="7">7</button>
-            <button class="numberButton" value="8">8</button>
-            <button class="numberButton" value="9">9</button>
-            <button class="numberButton" value="4">4</button>
-            <button class="numberButton" value="5">5</button>
-            <button class="numberButton" value="6">6</button>
-            <button class="numberButton" value="1">1</button>
-            <button class="numberButton" value="2">2</button>
-            <button class="numberButton" value="3">3</button>
-            <button class="numberButton" value="0">0</button>
-            <button class="decimal">.</button>
+    <div id="screen">
+        <div id="calculatorFrame">
+            <div id="calculator">
+                <div id="display"></div>
+                <div id="buttons">
+                    <div id="operands">
+                        <button id="AC">AC</button>
+                        <div id="numRow1">
+                            <button class="numberButton" value="7">7</button>
+                            <button class="numberButton" value="8">8</button>
+                            <button class="numberButton" value="9">9</button>
+                        </div>
+                        <div id="numRow2">
+                            <button class="numberButton" value="4">4</button>
+                            <button class="numberButton" value="5">5</button>
+                            <button class="numberButton" value="6">6</button>
+                        </div>
+                        <div id="numRow3">
+                            <button class="numberButton" value="1">1</button>
+                            <button class="numberButton" value="2">2</button>
+                            <button class="numberButton" value="3">3</button>
+                        </div>
+                        <div id="lastRow">
+                            <div id="zeroButtonContainer">
+                                <button class="numberButton" id="zeroButton" value="0">0</button>
+                            </div>
+                            <div id="decimalContainer">
+                                <button id="decimal">.</button>
+                            </div> 
+                        </div>
+                    </div>
+                    <div id="operators">
+                        <button class="operatorButton" value="+">+</button>
+                        <button class="operatorButton" value="-">-</button>
+                        <button class="operatorButton" value="*">*</button>
+                        <button class="operatorButton" value="/">/</button>
+                        <button class="operatorButton" value="=">=</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="operators">
-            <button class="operatorButton" value="+">+</button>
-            <button class="operatorButton" value="-">-</button>
-            <button class="operatorButton" value="*">*</button>
-            <button class="operatorButton" value="/">/</button>
-            <button class="operatorButton" value="=">=</button>
-        </div>
-
     </div>
 </body>
 </html>

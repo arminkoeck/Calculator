@@ -1,0 +1,123 @@
+
+
+#screen {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+#calculatorFrame {
+    display: flex;
+    width: 400px;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+    background-color: #46648C;
+    border-radius: 8px;
+}
+
+#calculator {
+    display: flex;
+    width: 390px;
+    height: 590px;
+    flex-direction: column;
+    background-color: #617ea5;
+    border-radius: 5px;
+}
+
+
+#display {
+    display: flex;
+    border-radius: 5px;
+    border: 3px solid #333333;
+    min-width: 0;
+    flex-wrap: wrap;
+    justify-content: right;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    margin: 12px;
+    padding: 25px 10px;
+    background-color: lightblue
+    
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: stretch;
+    margin: 0 10px 10px 10px;
+}
+
+#operands {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+}
+
+#operators {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.operatorButton {
+    flex-grow: 1;
+    background-color: gold;
+    border-radius: 5px;
+    border: 3px solid #333333;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    margin: 2px;
+}
+
+.numberButton {
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 3px solid #333333;
+    flex-grow: 1;
+    flex-basis: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    margin: 2px;
+}
+
+
+#numRow1, #numRow2, #numRow3, #lastRow, #AC {
+    display: flex;
+    flex-grow: 1;
+    align-items: stretch;
+}
+
+#AC {
+    justify-content: center;
+    align-items: center;
+    background-color: #969ee7;
+    border-radius: 5px;
+    border: 3px solid #333333;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    margin: 2px;
+}
+
+#zeroButtonContainer {
+    display: flex;
+    flex-grow: 2;
+    flex-basis: 0;
+}
+
+#decimalContainer {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+#decimal {
+    flex-grow: 1;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 3px solid #333333;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    margin: 2px;
+}
