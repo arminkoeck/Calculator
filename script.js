@@ -78,11 +78,11 @@ operatorButton.forEach(operatorButton => {
 // gets num1 or num2 depending on when the numbers are clicked
 
 function getNumber(e) {
-    if (operator === "" || operator === "=") {
+    if ((operator === "" || operator === "=") && String(num1).length < 24) {
         getNum1(e.target.value);
     } else if (operator === "reset") {
         resetOperator(e);
-    } else if (operator !== "" && operator !== "="){
+    } else if ((operator !== "" && operator !== "=") && String(num2).length < 24){
         getNum2(e.target.value);
     };
 };
@@ -166,6 +166,7 @@ AC.addEventListener("click", function () {
     operator = "";
     changeDisplay(0);
 });
+
 
 
 // starts with a zero on the Screen
