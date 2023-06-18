@@ -43,7 +43,15 @@ function round(num) {
 
 function changeDisplay(value) {
     const display = document.querySelector("#display");
-    display.textContent = value;
+    checkForInfinity(value);
+}
+
+function checkForInfinity(value) {
+    if (value === Infinity) {
+        display.textContent = "You broke my CPU...";
+    } else {
+        display.textContent = value;
+    }
 }
 
 
@@ -164,8 +172,6 @@ AC.addEventListener("click", function () {
 
 changeDisplay(0);
 
-// divide by 0 shouldnt work and give an error message
-// get floating point numbers
 // calculating Text floats over screen
 // active class for operator buttons -> gets attached to the active operator -> the "=" operator shouldnt have this feature
 
