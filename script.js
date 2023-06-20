@@ -61,19 +61,36 @@ const numberButton = document.querySelectorAll(".numberButton");
 
 numberButton.forEach(numberButton => {
     numberButton.addEventListener("click", function(e) {
+        numberButton.classList.add("numberClick")
+        setTimeout(() => numberButton.classList.remove("numberClick"), 100);
         getNumber(e);
     });
 });
 
+
 // gets the value of the operator buttons
 
-const operatorButton = document.querySelectorAll(".operatorButton");
-operatorButton.forEach(operatorButton => {
+const operatorButtons = document.querySelectorAll(".operatorButtons");
+
+operatorButtons.forEach(operatorButton => {
     operatorButton.addEventListener("click", function(e) {
-        calculate(e);
+        operatorButtons.forEach(operatorButton => operatorButton.classList.remove("activeOperator"));
+        changeColor(e);
+        calculate (e);
     });
 });
 
+
+// set the clicked operator Button on active
+
+function changeColor (e) {
+    if (e.target.value === "=") {
+        e.target.classList.add("activeOperator");
+        setTimeout(() => e.target.classList.remove("activeOperator"), 100);
+    } else {
+        e.target.classList.add("activeOperator");
+    };
+};
 
 // gets num1 or num2 depending on when the numbers are clicked
 
@@ -159,8 +176,10 @@ function resetOperator(e) {
 
 // resets calculator
 
-const AC = document.querySelector("#AC");
+const AC = document.querySelector(".AC");
 AC.addEventListener("click", function () {
+    AC.classList.add("deleteClick")
+        setTimeout(() => AC.classList.remove("deleteClick"), 100);
     num1 = 0;
     num2 = "";
     operator = "";
@@ -173,7 +192,6 @@ AC.addEventListener("click", function () {
 
 changeDisplay(0);
 
-// calculating Text floats over screen
 // active class for operator buttons -> gets attached to the active operator -> the "=" operator shouldnt have this feature
 
 

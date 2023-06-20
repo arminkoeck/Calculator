@@ -63,7 +63,7 @@
     flex-grow: 1;
 }
 
-.operatorButton {
+.operatorButtons {
     flex-grow: 1;
     background-color: gold;
     border-radius: 5px;
@@ -85,13 +85,13 @@
 }
 
 
-#numRow1, #numRow2, #numRow3, #lastRow, #AC {
+#numRow1, #numRow2, #numRow3, #lastRow, .AC {
     display: flex;
     flex-grow: 1;
     align-items: stretch;
 }
 
-#AC {
+.AC {
     justify-content: center;
     align-items: center;
     background-color: #969ee7;
@@ -114,7 +114,7 @@
     flex-basis: 0;
 }
 
-#decimal {
+.decimal {
     flex-grow: 1;
     background-color: #ffffff;
     border-radius: 5px;
@@ -122,4 +122,16 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
     margin: 2px;
+}
+
+.numberClick {
+    background-color: #d3d3d3;
+}
+
+.deleteClick {
+    background-color: #747bbb;
+}
+
+.activeOperator {
+    background-color: rgb(206, 176, 10);
 }
